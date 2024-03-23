@@ -25,8 +25,7 @@ SECRET_KEY = 'v4(v)0+1y@4#k_26mcq50edy%w6c79$2^=jm(t-5#jt-tf3hvo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['*',"sona-ultima.azurewebsites.net"]
 
 # Application definition
 
