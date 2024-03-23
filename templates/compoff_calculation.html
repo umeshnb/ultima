@@ -4,52 +4,100 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Date Table</title>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+        font-family: Arial, sans-serif; /* Specify desired font */
     }
-    th, td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
+
+    .container {
+        margin-top: 50px; /* Adjust top margin */
     }
-    th {
-        background-color: #f2f2f2;
+
+    .form-group label {
+        font-weight: bold; /* Bold label text */
+    }
+
+    #dateForm {
+        background-color: #ffffff; /* White background for form */
+        padding: 20px; /* Add padding */
+        border-radius: 10px; /* Add rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+    }
+
+    #dateTable {
+        background-color: #ffffff; /* White background for table */
+        border-radius: 10px; /* Add rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+    }
+
+    /* Style table header */
+    #dateTable thead th {
+        background-color: hsla(0, 0%, 2%, 0.397); /* Blue background for header */
+        color: #ffffff; /* White text color */
+    }
+
+    /* Style alternating rows */
+    #dateTable tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Light gray background for even rows */
+    }
+
+    /* Style table cell padding */
+    #dateTable td, #dateTable th {
+        padding: 12px; /* Add padding to cells */
+    }
+
+    /* Style submit button */
+    .btn-primary {
+        background-color: #007bff; /* Blue background for primary button */
+        border-color: #007bff; /* Match border color with background */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        border-color: #0056b3; /* Darker border on hover */
     }
 </style>
 </head>
 <body>
 
-<h2>Date Input</h2>
-<form id="dateForm" method="post" action="">
-    {% csrf_token %}
-    <label for="inputdate">Select a Date:</label>
-    <input type="date" id="inputdate" name="inputdate">
-    <button type="submit" onclick="addDate()">Submit</button>
-</form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Add Holiday Date</h2>
+            <form id="dateForm" method="post" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputdate">Select a Date:</label>
+                    <input type="date" class="form-control" id="inputdate" name="inputdate">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" onclick="addDate()">Submit</button>
+            </form>
+        </div>
+    </div>
 
-<h2>Dates Added</h2>
-<table id="dateTable">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Action</th>
-        </tr>
-        <tr><td>{{ holiday }}</td><td> {{ compoff }}</td></tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+    <div class="mt-4">
+        <div class="text-center">
+            <h2>Compensetory Off details</h2>
+            <table id="dateTable" class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Holiday Worked</th>
+                        <th>Comp-Off Expire On</th>
+                    </tr>
+                    <tr><td>{{ holiday }}</td><td> {{ compoff }}</td></tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-<script>
-    function addDate(){
-        var dateInput = document.getElementById('dateInput').value;
-        var table = document.getElementById('dateTable').getElementsByTagName('tbody')[0];
-
-
-    }
-</script>
+<!-- Bootstrap JS (Optional, if you need JavaScript features provided by Bootstrap) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
